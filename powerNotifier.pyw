@@ -3,12 +3,12 @@ from win10toast import ToastNotifier
 import time
 import schedule
 
-ico_path1 = 'C:/Users/Laptop Point/python_programs/onl/Power Notifier1/battery_caution2.ico'
-ico_path2 = 'C:/Users/Laptop Point/python_programs/onl/Power Notifier1/battery_caution.ico'
+ico_path1 = '../icon2.ico'
+ico_path2 = '../icon1.ico'
 
 def notify_start():
     toast = ToastNotifier()
-    toast.show_toast('Batter Alert',
+    toast.show_toast('Batter Alert', 
                      'Power notifier is running...',
                      duration=5, 
                      icon_path=ico_path1)
@@ -49,13 +49,13 @@ try:
         # print(plugged_in)
 
         if plugged_in == True:
-            # print('Power Plugged_in = True\nBattery Percentage: {}%'.format(battery_percent))
+            print('Power Plugged_in = True\nBattery Percentage: {}%'.format(battery_percent))
             if battery_percent >= 97:
                 notify_fullcharge()
 
         else:
             _, battery_percent = power_info()
-            # print('Power plugged_in = False\nBattery Percentage: {}%'.format(battery_percent))
+            print('Power plugged_in = False\nBattery Percentage: {}%'.format(battery_percent))
             if battery_percent <= 15:
                 notify_batterylow()
                 
@@ -67,5 +67,5 @@ try:
         time.sleep(1)
         
 except:
-    # print('Unexpected Error Occured: Closing Batter Notifier...')
+    print('Unexpected Error Occured: Closing Batter Notifier...')
     notify_error()
